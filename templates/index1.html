@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  /* Add a subtle background color or gradient for overall vibrancy */
+  background: linear-gradient(to bottom right, #f0f8ff, #e6e6fa);
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  /* Add a subtle animation to the title */
+  animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title h2 {
+  font-size: 34px;
+  line-height: 1;
+  color: #337ab7; /* A vibrant blue */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.title p {
+  color: #555;
+  font-size: 16px; /* Slightly larger for better readability */
+  margin: 16px 0 0 0;
+}
+
+nav {
+  width: 100%;
+  position: fixed; /* Keep it fixed for sticky effect */
+  top: 0;
+  z-index: 1000; /* Ensure it stays on top */
+  background: linear-gradient(to right, #2c3e50, #34495e); /* Darker gradient for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+nav.hidden {
+  transform: translateY(-100%);
+  box-shadow: none;
+}
+
+nav .topNav .container,
+nav .bottomNav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px; /* Adjust padding */
+}
+
+nav .topNav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Slightly less opaque border */
+  padding: 6px 0; /* Adjust padding */
+}
+
+nav .topNav .container .icons i {
+  color: #fff;
+  margin-right: 12px;
+  font-size: 1.1em;
+  /* Add a subtle hover animation to icons */
+  transition: transform 0.2s ease-in-out;
+}
+
+nav .topNav .container .icons i:hover {
+  transform: scale(1.1);
+}
+
+nav .topNav .container .contact a {
+  color: #eee; /* Lighter text */
+  text-decoration: none;
+  font-size: 16px;
+  margin-left: 20px;
+  transition: color 0.3s ease;
+}
+
+nav .topNav .container .contact a:hover {
+  color: #ffc107; /* A bright yellow/amber */
+}
+
+nav .bottomNav {
+  padding: 14px 0; /* Adjust padding */
+}
+
+nav .bottomNav .container .logo {
+  cursor: pointer;
+  /* Add a subtle pulse animation to the logo */
+  animation: pulseLogo 2s infinite alternate;
+}
+
+@keyframes pulseLogo {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+nav .bottomNav .container .menu a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  margin-left: 22px;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative; /* For the underline effect */
+}
+
+nav .bottomNav .container .menu a::before {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #ffc107;
+  transition: width 0.3s ease-in-out;
+}
+
+nav .bottomNav .container .menu a:hover::before {
+  width: 100%;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background: url("static/img/h1.jpg") no-repeat center/cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content vertically and horizontally */
+}
+
+.main .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6); /* Slightly lighter overlay */
+}
+
+.main .container {
+  color: #fff;
+  position: relative;
+  text-align: center; /* Center text content */
+  animation: zoomIn 1s ease-in-out; /* Add zoom-in animation */
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.main .container h3 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #eee;
+}
+
+.main .container h1 {
+  font-size: 60px;
+  line-height: 1.1;
+  margin: 25px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.main .container p {
+  font-weight: 300;
+  line-height: 1.6;
+  font-size: 18px;
+  color: #ddd;
+  margin: 0 auto 20px; /* Center the paragraph */
+  max-width: 80%;
+}
+
+.main .container .btn {
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 16px 35px;
+  background: #ffc107; /* Bright yellow button */
+  color: #fff;
+  font-size: 16px;
+  margin: 34px 10px 0; /* Add horizontal margin */
+  border: 2px solid #ffc107;
+  border-radius: 5px; /* Add rounded corners */
+  transition: background 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+.main .container .btn:hover {
+  background: transparent;
+  color: #ffc107;
+}
+
+.services {
+  width: 100%;
+  padding: 120px 0;
+  background: #f8f9fa; /* Light gray background */
+}
+
+.services .container {
+  padding: 80px 20px 0; /* Add horizontal padding */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+  gap: 30px; /* Add gap between cards */
+}
+
+.services .container .card {
+  width: calc(33.33% - 20px); /* Adjust width for gap */
+  background: #fff;
+  padding: 30px;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+@media (max-width: 992px) {
+  .services .container .card {
+    width: calc(50% - 15px);
+  }
+}
+
+@media (max-width: 768px) {
+  .services .container .card {
+    width: 100%;
+  }
+}
+
+.services .container .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  background: #ffe082; /* Lighter yellow on hover */
+}
+
+.services .container .card .cardBg {
+  height: 250px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  background-image: url("static/img/bgcard1.jpg");
+
+}
+
+.services .container .card .cardBg.secondBg {
+  background-image: url("static/img/s5.webp");
+}
+
+.services .container .card .cardBg.thirdBg {
+  background-image: url("static/img/s6.jpg");
+}
+
+.services .container .card .cardInfo h3 {
+  margin: 25px 0;
+  color: #337ab7;
+}
+
+.services .container .card .cardInfo p {
+  margin: 18px 0;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.features {
+  width: 100%;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef); /* Subtle gradient */
+  padding: 120px 0;
+}
+
+.features .container {
+  padding: 60px 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.features .container .featureCard {
+  width: calc(33.33% - 20px);
+  background: #fff;
+  padding: 40px 30px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+@media (max-width: 992px) {
+  .features .container .featureCard {
+    width: calc(50% - 15px);
+  }
+}
+
+@media (max-width: 768px) {
+  .features .container .featureCard {
+    width: 100%;
+  }
+}
+
+.features .container .featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  background: #d4edda; /* Light green on hover */
+}
+
+.features .container .featureCard .heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.features .container .featureCard .heading i {
+  margin-right: 15px;
+  font-size: 1.5em;
+  color: #28a745; /* Vibrant green */
+}
+
+.features .container .featureCard h3 {
+  font-size: 22px;
+  color: #495057;
+}
+
+.features .container .featureCard p {
+  text-align: left;
+  line-height: 1.7;
+  color: #6c757d;
+  margin-top: 15px;
+}
+
+.clients {
+  width: 100%;
+  background: #fab700;
+  padding: 120px 0;
+}
+
+.clients .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.clients .container .numbers {
+  width: 100%;
+  max-width: 18%;
+}
+
+.clients .container .numbers h2 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.clients .container .numbers p {
+  font-size: 15px;
+  margin: 5px 0 0 0;
+}
+
+
+@media (max-width: 768px) {
+  .clients .container .numbers {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .clients .container .numbers {
+    width: 100%;
+  }
+}
+
+.clients .container .numbers h2 {
+  font-size: 48px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.clients .container .numbers p {
+  font-size: 16px;
+  margin: 8px 0 0 0;
+  font-weight: 300;
+}
+
+.gallery {
+  width: 100%;
+  padding: 120px 0;
+  background: #f8f9fa;
+}
+
+.gallery .container {
+  padding: 60px 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.gallery .container img {
+  width: calc(33.33% - 10px);
+  height: 250px;
+  margin: 10px 0;
+  cursor: pointer;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery .container img:hover {
+  transform: scale(1.05);
+}
+
+.gallery .container img:nth-child(2),
+.gallery .container img:nth-child(6) {
+  width: calc(40% - 10px);
+}
+
+.gallery .container img:first-of-type,
+.gallery .container img:last-of-type {
+  width: calc(58% - 10px);
+}
+
+@media (max-width: 768px) {
+  .gallery .container img {
+    width: calc(50% - 10px);
+  }
+
+  .gallery .container img:nth-child(2),
+  .gallery .container img:nth-child(6),
+  .gallery .container img:first-of-type,
+  .gallery .container img:last-of-type {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery .container img {
+    width: 100%;
+  }
+}
+
+/* ... Previous CSS ... */
+
+@media (max-width: 768px) {
+  .blog .container .blogCard {
+    width: calc(100% - 20px);
+  }
+}
+
+.blog .container .blogCard {
+  width: calc(25% - 20px);
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; /* Added transform */
+}
+
+.blog .container .blogCard:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.blog .container .blogCard:hover .blogInfo h3 {
+  color: #ff9800; /* A different shade of orange */
+}
+
+.blog .container .blogCard .blogBg {
+  overflow: hidden;
+  border-radius: 6px; /* Add rounded corners to image container */
+}
+
+.blog .container .blogCard .blogBg img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 1s ease-in-out; /* Smoother zoom */
+}
+
+.blog .container .blogCard:hover .blogBg img {
+  transform: scale(1.1); /* More subtle zoom */
+}
+
+.blog .container .blogCard .blogDate {
+  padding: 18px 20px; /* Add horizontal padding */
+  background-color: #f0f0f0; /* Light background for date */
+  border-radius: 0 0 6px 6px; /* Match image container */
+}
+
+.blog .container .blogCard .blogDate span {
+  background: #333;
+  color: #eee;
+  padding: 8px 16px; /* Adjust padding */
+  font-size: 15px;
+  border-radius: 4px;
+}
+
+.blog .container .blogCard .blogInfo {
+  padding: 20px;
+}
+
+.blog .container .blogCard .blogInfo h3 {
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 8px 0;
+  color: #337ab7; /* Vibrant blue for title */
+  transition: color 0.3s ease-in-out;
+}
+
+.blog .container .blogCard .blogInfo p {
+  color: #555;
+  line-height: 1.6;
+  margin: 16px 0 8px 0;
+}
+
+.blog .container .blogCard .blogInfo .desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Vertically align items */
+}
+
+.blog .container .blogCard .blogInfo .desc a {
+  color: #007bff; /* Link color */
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.blog .container .blogCard .blogInfo .desc a:hover {
+  color: #0056b3;
+}
+
+footer {
+  width: 100%;
+  background: linear-gradient(to right, #2c3e50, #34495e); /* Dark gradient */
+  padding: 120px 0;
+  color: #fff;
+  /* Add subtle animation to footer */
+  animation: fadeInUp 1s ease-in-out;
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-around; /* Distribute space more evenly */
+  flex-wrap: wrap;
+  padding: 0 20px; /* Add horizontal padding */
+  gap: 30px;
+}
+
+footer .container .box {
+  width: calc(30% - 20px); /* Adjust width for gap */
+  margin-bottom: 30px; /* Add margin between boxes */
+}
+
+@media (max-width: 768px) {
+  footer .container .box {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  footer .container .box {
+    width: 100%;
+  }
+}
+
+footer .container .box:first-of-type p {
+  margin-bottom: 30px;
+}
+
+footer .container .box:last-of-type {
+  max-width: 30%; /* Adjust if needed */
+}
+
+footer .container .box h2 {
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #eee;
+  border-bottom: 2px solid #444; /* Add a subtle bottom border */
+  padding-bottom: 10px;
+}
+
+footer .container .box p {
+  color: #999;
+  font-size: 15px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+footer .container .box p i {
+  color: #ffc107; /* Bright yellow */
+  margin-right: 5px;
+}
+
+footer .container .box p a {
+  text-decoration: none;
+  color: #ffc107;
+  transition: color 0.3s ease-in-out;
+}
+
+footer .container .box p a:hover {
+  color: #fdd835; /* Lighter yellow on hover */
+}
+
+footer .container .box .email {
+  display: flex;
+  padding: 25px 0;
+  border-bottom: 1px solid #444;
+}
+
+footer .container .box .email input {
+  width: 75%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  background: #333;
+  color: #fff;
+  border-radius: 5px 0 0 5px;
+}
+
+footer .container .box .email .btn {
+  background: #ffc107;
+  padding: 15px 20px;
+  color: #222;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+footer .container .box .email .btn:hover {
+  background: #fdd835;
+  color: #333;
+}
+
+footer .container .box .icons {
+  padding: 25px 0;
+}
+
+footer .container .box .icons i {
+  margin-right: 18px;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Added transform */
+  font-size: 1.2em;
+  color: #ddd;
+}
+
+footer .container .box .icons i:hover {
+  color: #ffc107;
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+/*# sourceMappingURL=style.css.map */
+</style>
+<body>
+
+    <nav>
+        <div class="">
+            <div class="container">
+                <div class="icons">
+                   
+                </div>
+            
+            </div>
+        </div>
+        <div class="bottomNav">
+            <div class="container">
+                <div class="logo">
+                </div>
+                <div class="menu">
+                    <a href="#home">home</a>
+                    <a href="#aboutus">about us</a>
+                    <a href="/register">register</a>
+                    <a href="/login">login</a> 
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="main">
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>Liver dieases detection </h1>
+            <p style="font-size: 20px;font-weight: bold;">"Detect Early. Live Longer. Empowering You with Fast & Accurate Liver Health Insights."
+
+            </p>
+            <a href="/register" class="btn">Register</a>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="title">
+            <h2>Our  Services</h2>
+            <p>Who are in extremely love with eco friendly system.</p>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="cardBg"></div>
+                <div class="cardInfo">
+                    <h3>Emergency room services</h3>
+                    <p>An emergency department is a dedicated area in a hospital that is organised and administered to provide a high. standard of emergency care to people in the community who perceive the need for, or are in need of, acute or. urgent care including hospital</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardBg secondBg"></div>
+                <div class="cardInfo">
+                    <h3>Short-term hospitalization.</h3>
+                    <p>The Short Stay Unit (SSU) is a type of admission that can provide targeted care for patients requiring brief hospitalization (≤5 days), as well as patients ready to be discharged as soon as their clinical condition is resolved.
+                      .</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardBg thirdBg"></div>
+                <div class="cardInfo">
+                    <h3>X-ray/radiology services.</h3>
+                    <p>An x-ray is a type of radiation used to create a picture of the inside of your body. As x-ray beams pass through your body they are absorbed differently by various structures in the body, such as your bones and soft tissues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="title">
+            <h2>Some Features that Made us Unique</h2>
+            <p>Who are in extremely love with eco friendly system.</p>
+            <div class="container">
+                <div class="featureCard">
+                    <div class="heading">
+                        <i class="far fa-user"></i>
+                        <h3>Expert Technicians</h3>
+                    </div>
+                    <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+                <div class="featureCard">
+                    <div class="heading">
+                        <i class="far fa-newspaper"></i>
+                        <h3></h3>Professional Service</h3>
+                    </div>
+                    <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+                <div class="featureCard">
+                    <div class="heading">
+                        <i class="fas fa-phone"></i>
+                        <h3>Great Support</h3>
+                    </div>
+                    <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+                <div class="featureCard">
+                    <div class="heading">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Technical Skills</h3>
+                    </div>
+                    <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+                <div class="featureCard">
+                    <div class="heading">
+                        <i class="far fa-gem"></i>
+                        <h3>Highly Recommended</h3>
+                    </div>
+                    <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+                <div class="featureCard">
+                    <div class="heading">
+                        <i class="far fa-comment"></i>
+                        <h3>Positive Reviews</h3>
+                    </div>
+                    <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="clients">
+        <div class="container">
+          <div class="numbers">
+            <h2>11th </h2>
+            <p>Most common cause of death globally is Liver diseases.</p>
+          </div>
+            <div class="numbers">
+                <h2>1.5 b</h2>
+                <p> people worldwide suffer from chronic liver disease.</p>
+            </div>
+            
+            <div class="numbers">
+                <h2>Up to 70%.</h2>
+                <p>Early detection can improve survival rates </p>
+            </div>
+            <div class="numbers">
+              <h2>530+</h2>
+              <p>Data Trained</p>
+          </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="title">
+            <h2>Latest From Our Gallery</h2>
+      
+            <div class="container">
+                <img src="static/img/g10.jpg" alt="g1">
+                <img src="static/img/g11.png" alt="g2">
+                <img src="static/img/g13.jpg" alt="g3">
+                <img src="static/img/g14.jpg" alt="g4">
+            </div>
+        </div>
+    </section>
+
+   
+    <footer>
+        <div id="aboutus" class="container">
+            <div class="box">
+                <h2>About Us</h2>
+                <p>"Detect Early. Live Longer. Empowering You with Fast & Accurate Liver Health Insights."</p>
+                <p>Copyright &copy;20250All rights reserved | Liver disease </p>
+            </div>
+            <div class="box">
+                <h2>Newsletter</h2>
+                <p>Stay update with our latest</p>
+                <div class="email">
+                    <input type="text" placeholder="Enter Email">
+                    <a href="#/" class="btn"><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="box">
+                <h2>Follow Us</h2>
+                <p>Let us be social</p>
+                <div class="icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-dribbble"></i>
+                    <i class="fab fa-behance"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

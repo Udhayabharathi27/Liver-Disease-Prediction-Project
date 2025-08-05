@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liver Disease Detection</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            padding: 40px 10px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 50px 40px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .container-heading {
+            font-size: 32px;
+            color: #00796b;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+
+        .typewriter-text {
+            overflow: hidden;
+            border-right: .15em solid #00796b;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .05em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00796b; }
+        }
+
+        .results {
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .safe, .danger {
+            font-size: 26px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .safe {
+            color: #2e7d32;
+        }
+
+        .danger {
+            color: #c62828;
+        }
+
+        .gif, .gif1 {
+            max-width: 300px;
+            margin-top: 25px;
+            border-radius: 12px;
+            animation: float 2.5s ease-in-out infinite;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gif:hover, .gif1:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 15px;
+            color: #ffffff;
+            background-color: #00796b;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer a:hover {
+            background-color: #004d40;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .container-heading {
+                font-size: 24px;
+            }
+
+            .safe, .danger {
+                font-size: 20px;
+            }
+
+            .gif, .gif1 {
+                width: 80%;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .footer {
+                font-size: 14px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form action="{{ url_for('predict')}}" method="post">
+        <h2 class="container-heading">
+            <span class="typewriter-text">LIVER DISEASE DETECTION</span>
+        </h2>
+
+        <div class="results">
+            {% if prediction==2 %}
+                <h1><span class='danger'>Oops! 🙁<br><br>You have LIVER DISEASE <br><br>Please Consult a Doctor.</span></h1>
+                <img class="gif" src="{{ url_for('static', filename='dr.gif')}}" alt="LIVER Image">
+            {% elif prediction==1 %}
+                <h1><span class='safe'>🤩 Congratulations! 🤩<br><br>You're normal.</span></h1>
+                <img class="gif1" src="{{ url_for('static', filename='yes.webp')}}" alt="Not LIVER Image">
+            {% elif prediction==3 %}
+                <h1><span class='safe'>🤩 Congratulations! 🤩<br><br>You're Underweight.</span></h1>
+                <img class="gif1" src="{{ url_for('static', filename='yes.webp')}}" alt="Not LIVER Image">
+            {% endif %}
+        </div>
+    </form>
+</div>
+
+<!-- Creative Footer -->
+<div class="footer">
+    Need help or have questions? <a href="mailto:healthsupport@example.com">Contact Support</a> 🩺
+</div>
+
+</body>
+</html>

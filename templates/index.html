@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Liver Disease Prediction</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f3f9f7, #e2f1f0); /* Updated background */
+      margin: 0;
+      padding: 0;
+      animation: fadeInBody 1.2s ease-in;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: dodgerblue; /* Changed header background to dark green */
+      color: white;
+    }
+
+    .container-heading .heading_font {
+      font-size: 36px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .ml-container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #fdfdfd; /* Light background for form */
+      padding: 35px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      animation: slideIn 1s ease;
+    }
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h3 {
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #bbb;
+      border-radius: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+      transform: scale(1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Added box shadow */
+    }
+
+    input[type="text"]:focus {
+      border-color: #27ae60; /* Green focus border */
+      box-shadow: 0 0 8px rgba(39, 174, 96, 0.4); /* Green glow */
+      transform: scale(1.02);
+    }
+
+    #sub {
+      margin-top: 30px;
+      background-color: #27ae60; /* Changed button to green */
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Added box shadow */
+    }
+
+    #sub:hover {
+      background-color: #2d9e4f; /* Darker green on hover */
+      transform: scale(1.03);
+    }
+
+    #sub:active {
+      transform: scale(0.96);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      animation: fadeInUp 0.6s ease-in-out both;
+    }
+
+    .form-group label {
+      width: 45%;
+      font-size: 15px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    .form-group input[type="text"] {
+      width: 55%;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-group:nth-child(1) { animation-delay: 0.1s; }
+    .form-group:nth-child(2) { animation-delay: 0.2s; }
+    .form-group:nth-child(3) { animation-delay: 0.3s; }
+    .form-group:nth-child(4) { animation-delay: 0.4s; }
+    .form-group:nth-child(5) { animation-delay: 0.5s; }
+    .form-group:nth-child(6) { animation-delay: 0.6s; }
+    .form-group:nth-child(7) { animation-delay: 0.7s; }
+    .form-group:nth-child(8) { animation-delay: 0.8s; }
+    .form-group:nth-child(9) { animation-delay: 0.9s; }
+    .form-group:nth-child(10) { animation-delay: 1s; }
+
+    @media (max-width: 600px) {
+      .ml-container {
+        margin: 30px 15px;
+        padding: 25px 20px;
+      }
+
+      .container-heading .heading_font {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class='container-heading'><span class="heading_font">Liver Disease Prediction</span></h2>
+  </div>
+
+  <div class="ml-container">
+    <form action="{{ url_for('predict') }}" method="POST">
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input name="Age" placeholder="e.g. 45" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <input name="Gender" placeholder="Male = 1, Female = 0" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Total_Bilirubin">Total Bilirubin</label>
+        <input name="Total_Bilirubin" placeholder="e.g. 1.2" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Direct_Bilirubin">Direct Bilirubin</label>
+        <input name="Direct_Bilirubin" placeholder="e.g. 0.3" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Alkaline_Phosphotase">Alkaline Phosphotase</label>
+        <input name="Alkaline_Phosphotase" placeholder="e.g. 200" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Alamine_Aminotransferase">Alamine Aminotransferase</label>
+        <input name="Alamine_Aminotransferase" placeholder="e.g. 35" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Aspartate_Aminotransferase">Aspartate Aminotransferase</label>
+        <input name="Aspartate_Aminotransferase" placeholder="e.g. 48" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Total_Protiens">Total Proteins</label>
+        <input name="Total_Protiens" placeholder="e.g. 6.5" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Albumin">Albumin</label>
+        <input name="Albumin" placeholder="e.g. 3.2" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="Albumin_and_Globulin_Ratio">Albumin and Globulin Ratio</label>
+        <input name="Albumin_and_Globulin_Ratio" placeholder="e.g. 0.9" type="text" required>
+      </div>
+
+      <button id="sub" type="submit">Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>
