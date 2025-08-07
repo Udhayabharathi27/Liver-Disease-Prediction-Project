@@ -1,7 +1,9 @@
 services:
   - type: web
-    name: liver-disease-prediction-2
+    name: liver-disease-prediction
     python:
-      version: "3.10.13"  # Matches your runtime.txt
-    buildCommand: pip install -r requirements.txt
+      version: "3.10.13"
+    buildCommand: |
+      python -m pip install --upgrade pip setuptools wheel
+      pip install -r requirements.txt
     startCommand: gunicorn app:app
