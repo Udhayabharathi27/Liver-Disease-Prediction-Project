@@ -3,6 +3,6 @@ services:
     name: liver-disease-predictor-v85j
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python app.py
+    startCommand: gunicorn app:app
     repo: https://github.com/Udhayabharathi27/Liver-Disease-Prediction-Project
     branch: main
