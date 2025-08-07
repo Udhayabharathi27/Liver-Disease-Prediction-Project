@@ -1,8 +1,10 @@
 services:
   - type: web
-    name: liver-disease-predictor-v85j
-    env: python
-    buildCommand: pip install -r requirements.txt
+    name: liver-disease-prediction
+    runtime: python
+    buildCommand: |
+      pip install -r requirements.txt
     startCommand: gunicorn app:app
-    repo: https://github.com/Udhayabharathi27/Liver-Disease-Prediction-Project
-    branch: main
+    envVars:
+      - key: FLASK_ENV
+        value: production
