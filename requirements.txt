@@ -1,7 +1,7 @@
 setuptools>=65.5.0
 wheel
 Cython
-pandas=2.2.2
+pandas==2.2.2
 # Core Requirements
 Flask==2.3.3
 gunicorn==21.2.0
